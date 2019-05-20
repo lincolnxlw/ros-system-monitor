@@ -530,9 +530,9 @@ if __name__ == '__main__':
         print >> sys.stderr, 'CPU monitor is unable to initialize node. Master may not be running.'
         sys.exit(0)
 
+    freq = rospy.get_param('~check_frequency', 1)
     cpu_node = CPUMonitor(hostname, options.diag_hostname)
-
-    rate = rospy.Rate(1.0)
+    rate = rospy.Rate(freq)
     try:
         while not rospy.is_shutdown():
             rate.sleep()

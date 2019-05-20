@@ -365,7 +365,8 @@ if __name__ == '__main__':
         sys.exit(0)
         
     hdd_monitor = hdd_monitor(hostname, options.diag_hostname)
-    rate = rospy.Rate(1.0)
+    freq = rospy.get_param('~check_frequency', 1)
+    rate = rospy.Rate(freq)
 
     try:
         while not rospy.is_shutdown():

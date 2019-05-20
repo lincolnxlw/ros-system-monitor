@@ -245,8 +245,9 @@ if __name__ == '__main__':
         sys.exit(0)
 
     mem_node = MemMonitor(hostname, options.diag_hostname)
+    freq = rospy.get_param('~check_frequency', 1)
 
-    rate = rospy.Rate(1.0)
+    rate = rospy.Rate(freq)
     try:
         while not rospy.is_shutdown():
             rate.sleep()
